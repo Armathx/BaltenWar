@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 947807693334185104}
   - component: {fileID: 1657259872308123917}
   m_Layer: 0
-  m_Name: Turret 1d
+  m_Name: MortarTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -396,7 +396,7 @@ MonoBehaviour:
   target: {fileID: 0}
   head: {fileID: 6681221525935678184}
   muzzle: {fileID: 6681221525935678184}
-  damage: 50000000
+  damage: 3000
   attackRate: 3
   range: 5000
   timer: 0

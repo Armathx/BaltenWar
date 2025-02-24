@@ -286,7 +286,7 @@ MonoBehaviour:
   target: {fileID: 0}
   head: {fileID: 626219794537877746}
   muzzle: {fileID: 819716647826716404}
-  damage: 20
+  damage: 100
   attackRate: 0
   range: 20
   timer: 0

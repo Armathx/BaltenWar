@@ -4068,7 +4068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477a54fc8848b9643bb5349d7ad85c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 1000
   goal: {fileID: 0}
   weakPoint: {fileID: 6078625155308173985}
 --- !u!135 &2799942742465025525

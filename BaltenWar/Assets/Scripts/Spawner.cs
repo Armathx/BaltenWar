@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
 
             g.GetComponent<Enemy>().goal = end;
 
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 1618883790116265039}
   - component: {fileID: 3585621023507413795}
   m_Layer: 0
-  m_Name: Turret 1c
+  m_Name: GatlingTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,9 +775,9 @@ MonoBehaviour:
   target: {fileID: 0}
   head: {fileID: 9039185391882591390}
   muzzle: {fileID: 3838225117817666485}
-  damage: 0
-  attackRate: 0
-  range: 0
+  damage: 20
+  attackRate: 0.05
+  range: 20
   timer: 0
   layerMask:
     serializedVersion: 2

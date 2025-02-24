@@ -99,5 +99,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df8fca4c651b8b43b540d79ae50ec4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 25
-  explosionPS: {fileID: 8187618784092841407, guid: c3b37d5ccea25384a9ce6fc92707e60e, type: 3}
+  radius: 5
+  explosionPS: {fileID: 7032633532244619197, guid: 9fbf138ed76222e4fb25f42716c68a66, type: 3}
