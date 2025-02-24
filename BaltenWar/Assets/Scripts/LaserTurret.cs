@@ -23,20 +23,11 @@ public class LaserTurret : Turret
     }
 
     // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
         lineRenderer.enabled = target != null;
 
-        if (target == null)
-        {
-            FindTarget();
-        }
-        else
-        {
-            Aim();
-            Attack();
-            CheckValidTarget();
-        }
+        base.Update();
     }
 
     private void OnDrawGizmos()

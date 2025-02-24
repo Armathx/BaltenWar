@@ -32,4 +32,18 @@ public abstract class Turret : MonoBehaviour
             target = null;
         }
     }
+
+    protected virtual void Update()
+    {
+        if (target == null)
+        {
+            FindTarget();
+        }
+        else
+        {
+            Aim();
+            Attack();
+            CheckValidTarget();
+        }
+    }
 }
