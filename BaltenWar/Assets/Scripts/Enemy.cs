@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float health;
     public Transform goal;
+    public Transform weakPoint;
     private NavMeshAgent agent;
     private Animator animator;
 
@@ -16,7 +17,10 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
 
         agent.SetDestination(goal.position);
-        animator.SetBool("Walk_Anim", true);
+        if (animator != null)
+        {
+            animator.SetBool("Walk_Anim", true);
+        }
         agent.updateRotation = true;
     }
 

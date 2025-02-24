@@ -15,7 +15,7 @@ public class LaserTurret : Turret
         target.TakeDamage(damage * Time.deltaTime);
 
         lineRenderer.SetPosition(0, muzzle.transform.position);
-        lineRenderer.SetPosition(1, target.transform.position);
+        lineRenderer.SetPosition(1, target.weakPoint.position);
     }
 
     private void Start()
