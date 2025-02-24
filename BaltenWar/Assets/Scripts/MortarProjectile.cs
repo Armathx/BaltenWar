@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -17,6 +19,8 @@ public class MortarProjectile : MonoBehaviour
     private LayerMask layerMask;
 
     [SerializeField] private float radius = 5f;
+
+    [SerializeField] private GameObject explosionPS;
 
     public Vector3 m_Start { get => start; set => start = value; }
     public Vector3 m_End { get => end; set => end = value; }
@@ -43,8 +47,18 @@ public class MortarProjectile : MonoBehaviour
         {
             foreach (var enemy in Physics.OverlapSphere(end, radius, layerMask))
             {
-                enemy.GetComponent<Enemy>().TakeDamage(damage);
+                enemy.GetComponent<Enemy>()?.TakeDamage(damage);
             }
+
+            GetComponent<Renderer>().enabled = false;
+            StartCoroutine(LateDelete(Instantiate(explosionPS, transform.position, Quaternion.identity)));
         }
+    }
+
+    private IEnumerator LateDelete(GameObject _gameObject)
+    {
+        yield return new WaitForSeconds(0.01f);
+        Destroy(_gameObject);
+        Destroy(gameObject);
     }
 }
