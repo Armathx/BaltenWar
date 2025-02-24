@@ -9,6 +9,7 @@ public abstract class Turret : MonoBehaviour
     public float damage;
     public float attackRate;
     public float range;
+    public float timer = 0;
 
     public LayerMask layerMask;
 
@@ -35,12 +36,14 @@ public abstract class Turret : MonoBehaviour
 
     protected virtual void Update()
     {
+        timer += Time.deltaTime;
         if (target == null)
         {
             FindTarget();
         }
-        else
+        else if (timer >= attackRate)
         {
+            timer -= attackRate;
             Aim();
             Attack();
             CheckValidTarget();

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ProjectileTurret : Turret
 {
+    [SerializeField] private GameObject projectile;
+
     public override void Aim()
     {
         head.transform.LookAt(target.transform.position);
