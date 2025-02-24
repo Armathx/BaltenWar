@@ -287,8 +287,9 @@ MonoBehaviour:
   head: {fileID: 626219794537877746}
   muzzle: {fileID: 819716647826716404}
   damage: 20
-  attackRate: 2
+  attackRate: 0
   range: 20
+  timer: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 192
@@ -343,13 +344,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.20183492
+        value: 0.7981713
         inSlope: 0
         outSlope: 0
         tangentMode: 0

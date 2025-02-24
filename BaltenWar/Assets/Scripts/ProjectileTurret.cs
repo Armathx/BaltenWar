@@ -11,7 +11,10 @@ public class ProjectileTurret : Turret
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Projectile p = Instantiate(projectile).GetComponent<Projectile>();
+        p.transform.position = muzzle.transform.position;
+        p.Target = target;
+        p.Damage = damage;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

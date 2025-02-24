@@ -41,11 +41,14 @@ public abstract class Turret : MonoBehaviour
         {
             FindTarget();
         }
-        else if (timer >= attackRate)
+        else
         {
-            timer -= attackRate;
             Aim();
-            Attack();
+            if (timer >= attackRate)
+            {
+                timer -= attackRate;
+                Attack();
+            }
             CheckValidTarget();
         }
     }
