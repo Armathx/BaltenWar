@@ -10,9 +10,11 @@ public class ClickManager : MonoBehaviour
 
     public bool editMode = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameObject currentTurret = null;
+
     private void Start()
     {
+        currentTurret = laserTurret;
     }
 
     // Update is called once per frame
@@ -26,40 +28,53 @@ public class ClickManager : MonoBehaviour
             Vector3 screenPoint = Input.mousePosition;
             screenPoint.z = 49; //distance of the plane from the camera
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(screenPoint), out hit, 1000))//classic Hit 
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(screenPoint), out hit, 1000))//classic Hit
             {
                 if (hit.collider.CompareTag("Slot"))
                 {
-                    sphere.transform.position = hit.collider.transform.position + Vector3.up + Vector3.back * 2.5f + Vector3.right * 2.5f;
+                    if (hit.collider.transform.childCount == 0)
+                    {
+                        currentTurret.SetActive(true);
+                        currentTurret.transform.position = hit.collider.transform.position + Vector3.back * 2.5f + Vector3.right * 2.5f;
+                    }
+                    else
+                    {
+                        currentTurret.SetActive(false);
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.Keypad1)) //Spawn Laser
             {
-                if (hit.collider != null && hit.collider.CompareTag("Slot") && hit.collider.transform.childCount == 0)
-                {
-                    GameObject turret = Instantiate(laserTurret, hit.collider.transform);
-                    turret.transform.position = sphere.transform.position + Vector3.down;
-                }
+                currentTurret.SetActive(false);
+                currentTurret = laserTurret;
+                currentTurret.SetActive(true);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad2))//Spawn Mortar
             {
-                if (hit.collider != null && hit.collider.CompareTag("Slot") && hit.collider.transform.childCount == 0)
-                {
-                    GameObject turret = Instantiate(mortarTurret, hit.collider.transform);
-                    turret.transform.position = sphere.transform.position + Vector3.down;
-                }
+                currentTurret.SetActive(false);
+                currentTurret = mortarTurret;
+                currentTurret.SetActive(true);
             }
             else if (Input.GetKeyDown(KeyCode.Keypad3))//Spawn Gatling
             {
+                currentTurret.SetActive(false);
+                currentTurret = gatlingTurret;
+                currentTurret.SetActive(true);
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
                 if (hit.collider != null && hit.collider.CompareTag("Slot") && hit.collider.transform.childCount == 0)
                 {
-                    GameObject turret = Instantiate(gatlingTurret, hit.collider.transform);
-                    turret.transform.position = sphere.transform.position + Vector3.down;
+                    GameObject turret = Instantiate(currentTurret, hit.collider.transform);
+                    turret.transform.position = currentTurret.transform.position;
+                    turret.GetComponent<Turret>().inGame = true;
                 }
-
             }
         }
-        sphere.GetComponent<Renderer>().enabled = editMode;
+        else
+        {
+            currentTurret.SetActive(false);
+        }
     }
 
     private void OnDrawGizmos()

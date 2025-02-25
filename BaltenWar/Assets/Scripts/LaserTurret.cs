@@ -5,7 +5,8 @@ using UnityEngine.VFX;
 public class LaserTurret : Turret
 {
     [SerializeField] private LineRenderer lineRenderer;
-    VisualEffect effect;
+    private VisualEffect effect;
+
     public override void Aim()
     {
         head.transform.LookAt(target.transform.position);
@@ -15,11 +16,11 @@ public class LaserTurret : Turret
     {
         target.TakeDamage(damage * Time.deltaTime);
         effect.Play();
-        float dist = (muzzle.transform.position -target.weakPoint.position).magnitude;
-        effect.SetVector3("StartPosition", Vector3.zero);
+        float dist = (muzzle.transform.position - target.weakPoint.position).magnitude;
+        //effect.SetVector3("StartPosition", Vector3.zero);
         effect.transform.LookAt(target.weakPoint.position);
         //effect.SetVector3("EndPosition", Vector3.forward  );
-        effect.SetFloat("YScale", dist / 6f);
+        effect.SetFloat("YScale", dist / 3f);
         //lineRenderer.SetPosition(0, muzzle.transform.position);
         //lineRenderer.SetPosition(1, target.weakPoint.position);
     }
@@ -35,7 +36,7 @@ public class LaserTurret : Turret
         //lineRenderer.enabled = target != null;
 
         base.Update();
-        if(target == null )
+        if (target == null)
         {
             effect.Stop();
         }

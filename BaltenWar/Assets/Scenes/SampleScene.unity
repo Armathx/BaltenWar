@@ -3653,6 +3653,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304824284}
   m_Mesh: {fileID: 4300000, guid: bb26efff5bd20b047b87b0df33781012, type: 3}
+--- !u!1 &306527893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4844985558922534709, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
+  m_PrefabInstance: {fileID: 711517249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &306564979
 GameObject:
   m_ObjectHideFlags: 0
@@ -4977,9 +4982,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 440311156}
-  laserTurret: {fileID: 4844985558922534709, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
-  mortarTurret: {fileID: 8845800444528275126, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
-  gatlingTurret: {fileID: 8467829190155677809, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
+  laserTurret: {fileID: 306527893}
+  mortarTurret: {fileID: 2147206250}
+  gatlingTurret: {fileID: 1968248119}
   editMode: 1
 --- !u!4 &371504140
 Transform:
@@ -10872,13 +10877,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: Duration
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4844985558922534709, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
       propertyPath: m_Name
       value: LaserTurret
       objectReference: {fileID: 0}
     - target: {fileID: 8158834862915988322, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.59
+      value: 47.4
       objectReference: {fileID: 0}
     - target: {fileID: 8158834862915988322, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23686,6 +23707,9 @@ VisualEffect:
       - m_Value: 3
         m_Name: Duration
         m_Overridden: 0
+      - m_Value: 2
+        m_Name: YScale
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -30743,6 +30767,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965727203}
   m_Mesh: {fileID: 4300000, guid: bb26efff5bd20b047b87b0df33781012, type: 3}
+--- !u!1 &1968248119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8467829190155677809, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
+  m_PrefabInstance: {fileID: 1171590762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972567223
 GameObject:
   m_ObjectHideFlags: 0
@@ -34327,6 +34356,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142673140}
   m_Mesh: {fileID: 4300000, guid: bb26efff5bd20b047b87b0df33781012, type: 3}
+--- !u!1 &2147206250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8845800444528275126, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
+  m_PrefabInstance: {fileID: 1144466154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &894417618310041513
 MeshCollider:
   m_ObjectHideFlags: 0
