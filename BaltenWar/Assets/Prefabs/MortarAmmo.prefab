@@ -100,4 +100,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  explosionPS: {fileID: 7032633532244619197, guid: 9fbf138ed76222e4fb25f42716c68a66, type: 3}
+  explosionPS: {fileID: 1449266754865364194, guid: 885b5d7c16d9a924db79db592cac99ca, type: 3}
