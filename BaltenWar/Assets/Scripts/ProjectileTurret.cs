@@ -16,7 +16,7 @@ public class ProjectileTurret : Turret
         p.transform.position = muzzle.transform.position;
         p.Target = target;
         p.Damage = damage;
-        pivot.localRotation *= Quaternion.Euler(2000f * Time.deltaTime, 0, 0);
+        pivot.localRotation *= Quaternion.Euler(5000f * Time.deltaTime, 0, 0);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
