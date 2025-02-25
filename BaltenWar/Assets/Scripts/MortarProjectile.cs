@@ -52,15 +52,9 @@ public class MortarProjectile : MonoBehaviour
 
             GetComponent<Renderer>().enabled = false;
 
-            StartCoroutine(LateDelete(Instantiate(explosionPS, transform.position, Quaternion.identity)));
+            Destroy(Instantiate(explosionPS, transform.position, Quaternion.identity), 0.333f);
+
+            Destroy(gameObject, 0.333f);
         }
-    }
-
-    private IEnumerator LateDelete(GameObject _gameObject)
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        Destroy(_gameObject);
-        Destroy(gameObject);
     }
 }
