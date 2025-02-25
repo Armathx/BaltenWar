@@ -51,6 +51,7 @@ MonoBehaviour:
   health: 70
   goal: {fileID: 0}
   weakPoint: {fileID: 5532984774709983582}
+  vfx: {fileID: 1045936881414362373, guid: c73d106a303830644b04ee2c2ae035b2, type: 3}
   b_isDead: 0
 --- !u!195 &6760569140268664716
 NavMeshAgent:

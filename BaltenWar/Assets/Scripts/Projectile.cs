@@ -23,8 +23,9 @@ public class Projectile : MonoBehaviour
         timer += Time.deltaTime;
         if (target != null)
         {
-            transform.position = Vector3.Lerp(startPos, target.weakPoint.position, timer / timeToHit);
-            if (timer >= timeToHit)
+            transform.position = Vector3.MoveTowards(transform.position, target.weakPoint.position, 20 * Time.deltaTime);
+
+            if ((transform.position - target.weakPoint.position).sqrMagnitude < 0.1f)
             {
                 target.TakeDamage(damage);
                 Destroy(gameObject);

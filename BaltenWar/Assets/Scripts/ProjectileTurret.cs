@@ -3,6 +3,7 @@ using UnityEngine;
 public class ProjectileTurret : Turret
 {
     [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform pivot;
 
     public override void Aim()
     {
@@ -15,6 +16,7 @@ public class ProjectileTurret : Turret
         p.transform.position = muzzle.transform.position;
         p.Target = target;
         p.Damage = damage;
+        pivot.localRotation *= Quaternion.Euler(2000f * Time.deltaTime, 0, 0);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

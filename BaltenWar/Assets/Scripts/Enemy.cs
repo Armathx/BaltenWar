@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform weakPoint;
     private NavMeshAgent agent;
     private Animator animator;
+    [SerializeField] private GameObject vfx;
 
     public delegate void IsDestroyed();
 
@@ -40,6 +42,9 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        GameObject g = Instantiate(vfx, weakPoint);
+        g.transform.localScale = new Vector3(1 / transform.localScale.x, 1 / transform.localScale.y, 1 / transform.localScale.z);
+        Destroy(g, 0.2f);
         if (health <= 0 && !b_isDead) m_destroy?.Invoke();
     }
 

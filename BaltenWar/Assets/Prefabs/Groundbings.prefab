@@ -4071,6 +4071,8 @@ MonoBehaviour:
   health: 100
   goal: {fileID: 0}
   weakPoint: {fileID: 6078625155308173985}
+  vfx: {fileID: 1045936881414362373, guid: c73d106a303830644b04ee2c2ae035b2, type: 3}
+  b_isDead: 0
 --- !u!135 &2799942742465025525
 SphereCollider:
   m_ObjectHideFlags: 0
