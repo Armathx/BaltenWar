@@ -9596,13 +9596,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 815686337}
   end: {fileID: 1575011625}
-  flyingPrefab: {fileID: 4701426548195086563, guid: 24062675258020943ad47857e745bc47, type: 3}
-  groundlingPrefab: {fileID: 8120693793161024824, guid: f840c8d3df4a05946a63152d9162bcea, type: 3}
-  initialGroundlings: 10
-  initialFlyings: 5
-  spawnRateG: 0.5
-  spawnRateF: 1
-  waveInterval: 5
+  waveConfigs:
+  - {fileID: 11400000, guid: b452843cfad5d184f92682fc418f6c5e, type: 2}
+  - {fileID: 11400000, guid: 3d98d55e0e73e2a499356862addb1c4d, type: 2}
+  - {fileID: 11400000, guid: ee47ae49d749b6441b3b68ca326d72ab, type: 2}
+  enemyPrefab:
+  - {fileID: 8120693793161024824, guid: f840c8d3df4a05946a63152d9162bcea, type: 3}
+  - {fileID: 4701426548195086563, guid: 24062675258020943ad47857e745bc47, type: 3}
 --- !u!4 &751827462
 Transform:
   m_ObjectHideFlags: 0
