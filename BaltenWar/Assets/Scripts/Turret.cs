@@ -38,13 +38,15 @@ public abstract class Turret : MonoBehaviour
     protected virtual void Update()
     {
         if (!inGame) return;
-        timer += Time.deltaTime;
+
         if (target == null)
         {
             FindTarget();
         }
         else
         {
+            timer += Time.deltaTime;
+
             Aim();
             if (timer >= attackRate)
             {
