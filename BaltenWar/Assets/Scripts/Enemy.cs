@@ -10,6 +10,12 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
+    public delegate void IsDestroyed();
+
+    public IsDestroyed m_destroy;
+
+    public bool b_isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -22,6 +28,8 @@ public class Enemy : MonoBehaviour
             animator.SetBool("Walk_Anim", true);
         }
         agent.updateRotation = true;
+
+        m_destroy += Destroy;
     }
 
     // Update is called once per frame
@@ -32,6 +40,12 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0 && !b_isDead) m_destroy?.Invoke();
+    }
+
+    public void Destroy()
+    {
+        b_isDead = true;
+        Destroy(gameObject);
     }
 }

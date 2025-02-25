@@ -2779,6 +2779,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10000
   goal: {fileID: 0}
+  weakPoint: {fileID: 0}
+  b_isDead: 0
 --- !u!135 &5727664437022376483
 SphereCollider:
   m_ObjectHideFlags: 0

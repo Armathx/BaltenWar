@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -16,13 +17,15 @@ public class WaveManager : MonoBehaviour
 
     private int waveId = 0;
     private bool isSpawning = false;
+    private int activeEnemies = 0;
+
+    private void Start()
+    {
+        StartCoroutine(StartWave());
+    }
 
     private void Update()
     {
-        if (!isSpawning)
-        {
-            StartCoroutine(StartWave());
-        }
     }
 
     private IEnumerator StartWave()
@@ -32,24 +35,56 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log("Lancement de la vague " + waveId);
 
-        int groundlingsCount = initialGroundlings + waveId * 2; //Incrémente de façon chelou les count de mobs
+        int groundlingsCount = initialGroundlings + waveId * 2;
         int flyingsCount = initialFlyings + waveId;
 
-        yield return StartCoroutine(SpawnEnemies(groundlingPrefab, groundlingsCount, spawnRateG));
-        yield return StartCoroutine(SpawnEnemies(flyingPrefab, flyingsCount, spawnRateF));
-
-        yield return new WaitForSeconds(waveInterval);
+        yield return StartCoroutine(SpawnEnemies(groundlingPrefab, flyingPrefab, groundlingsCount, flyingsCount, spawnRateG, spawnRateF));
 
         isSpawning = false;
     }
 
-    private IEnumerator SpawnEnemies(GameObject enemyPrefab, int count, float spawnRate)
+    private IEnumerator SpawnEnemies(GameObject enemyPrefabG, GameObject enemyPrefabF, int countG, int countF, float spawnRateF, float spawnRateG)
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < countG; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, start.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefabG, start.position, Quaternion.identity);
             enemy.GetComponent<Enemy>().goal = end;
-            yield return new WaitForSeconds(spawnRate);
+
+            // On incrémente le nombre d'ennemis actifs
+            activeEnemies++;
+            Debug.Log(activeEnemies);
+
+            // On s'abonne à l'événement de destruction de l'ennemi
+            enemy.GetComponent<Enemy>().m_destroy += EnemyDied;
+
+            yield return new WaitForSeconds(spawnRateG);
+        }
+
+        for (int i = 0; i < countF; i++)
+        {
+            GameObject enemy = Instantiate(enemyPrefabF, start.position, Quaternion.identity);
+            enemy.GetComponent<Enemy>().goal = end;
+
+            // On incrémente le nombre d'ennemis actifs
+            activeEnemies++;
+            Debug.Log(activeEnemies);
+
+            // On s'abonne à l'événement de destruction de l'ennemi
+            enemy.GetComponent<Enemy>().m_destroy += EnemyDied;
+
+            yield return new WaitForSeconds(spawnRateF);
+        }
+    }
+
+    private void EnemyDied()
+    {
+        activeEnemies--;
+        Debug.Log(activeEnemies);
+
+        // Vérifie si tous les ennemis sont morts et lance une nouvelle vague
+        if (activeEnemies == 0 && !isSpawning)
+        {
+            StartCoroutine(StartWave());
         }
     }
 }
