@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class LaserTurret : Turret
 {
     [SerializeField] private LineRenderer lineRenderer;
-
+    VisualEffect effect;
     public override void Aim()
     {
         head.transform.LookAt(target.transform.position);
@@ -13,21 +14,31 @@ public class LaserTurret : Turret
     public override void Attack()
     {
         target.TakeDamage(damage * Time.deltaTime);
-
-        lineRenderer.SetPosition(0, muzzle.transform.position);
-        lineRenderer.SetPosition(1, target.weakPoint.position);
+        effect.Play();
+        float dist = (muzzle.transform.position -target.weakPoint.position).magnitude;
+        effect.SetVector3("StartPosition", Vector3.zero);
+        effect.transform.LookAt(target.weakPoint.position);
+        //effect.SetVector3("EndPosition", Vector3.forward  );
+        effect.SetFloat("YScale", dist / 6f);
+        //lineRenderer.SetPosition(0, muzzle.transform.position);
+        //lineRenderer.SetPosition(1, target.weakPoint.position);
     }
 
     private void Start()
     {
+        effect = GetComponentInChildren<VisualEffect>();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        lineRenderer.enabled = target != null;
+        //lineRenderer.enabled = target != null;
 
         base.Update();
+        if(target == null )
+        {
+            effect.Stop();
+        }
     }
 
     private void OnDrawGizmos()
