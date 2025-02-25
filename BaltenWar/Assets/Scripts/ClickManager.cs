@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ClickManager : MonoBehaviour
@@ -9,6 +10,16 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private GameObject gatlingTurret;
 
     public bool editMode = false;
+
+    private enum TURRET_TYPE
+    {
+        LASER,
+        MORTAR,
+        GATLING,
+        COUNT
+    }
+
+    private TURRET_TYPE type = TURRET_TYPE.LASER;
 
     private GameObject currentTurret = null;
 
@@ -43,24 +54,17 @@ public class ClickManager : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Keypad1)) //Spawn Laser
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
             {
-                currentTurret.SetActive(false);
-                currentTurret = laserTurret;
-                currentTurret.SetActive(true);
+                type = (TURRET_TYPE)(((int)type + 1) % (int)TURRET_TYPE.COUNT);
+                UpdateCurrentTurret();
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad2))//Spawn Mortar
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
             {
-                currentTurret.SetActive(false);
-                currentTurret = mortarTurret;
-                currentTurret.SetActive(true);
+                type = (TURRET_TYPE)(((int)type - 1 + (int)TURRET_TYPE.COUNT) % (int)TURRET_TYPE.COUNT);
+                UpdateCurrentTurret();
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad3))//Spawn Gatling
-            {
-                currentTurret.SetActive(false);
-                currentTurret = gatlingTurret;
-                currentTurret.SetActive(true);
-            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (hit.collider != null && hit.collider.CompareTag("Slot") && hit.collider.transform.childCount == 0)
@@ -75,6 +79,27 @@ public class ClickManager : MonoBehaviour
         {
             currentTurret.SetActive(false);
         }
+    }
+
+    private void UpdateCurrentTurret()
+    {
+        currentTurret.SetActive(false);
+        switch (type)
+        {
+            case TURRET_TYPE.LASER:
+                currentTurret = laserTurret;
+                break;
+
+            case TURRET_TYPE.MORTAR:
+                currentTurret = mortarTurret;
+                break;
+
+            case TURRET_TYPE.GATLING:
+                currentTurret = gatlingTurret;
+                break;
+        }
+
+        currentTurret.SetActive(true);
     }
 
     private void OnDrawGizmos()
