@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
 
-    [SerializeField] private List<WavePreset> waveConfigs; // Liste des configurations de vague
+    [SerializeField] private List<WavePreset> waveConfigs; //Wave configurations list
 
     private int waveId = 0;
     private bool isSpawning = false;
@@ -35,13 +35,13 @@ public class WaveManager : MonoBehaviour
     private IEnumerator StartWave()
     {
         if (waveId >= waveConfigs.Count)
-            yield break; // Arrête si aucune autre vague n'est configurée.
+            yield break; // Stop if no more wave
 
         isSpawning = true;
         WavePreset currentWaveConfig = waveConfigs.First();
         waveConfigs.RemoveAt(0);
 
-        Debug.Log("Lancement de la vague " + waveId);
+        Debug.Log("Lancement de la vague " + currentWaveConfig.name);
 
         yield return new WaitForSeconds(3f);
         yield return StartCoroutine(SpawnEnemies(currentWaveConfig));
@@ -58,14 +58,14 @@ public class WaveManager : MonoBehaviour
                 GameObject enemy = Instantiate(enemyPrefab[(int)waveConfig.enemyTypes[i]], start.position, Quaternion.identity);
                 enemy.GetComponent<Enemy>().goal = end;
 
-                // Incrémenter le nombre d'ennemis actifs
+                //Increment enemies count
                 activeEnemies++;
                 Debug.Log(activeEnemies);
 
-                // S'abonner à l'événement de destruction de l'ennemi
+                //Delegate
                 enemy.GetComponent<Enemy>().m_destroy += EnemyDied;
 
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f); //Spawn Delay
             }
         }
     }
@@ -75,7 +75,7 @@ public class WaveManager : MonoBehaviour
         activeEnemies--;
         Debug.Log(activeEnemies);
 
-        // Vérifie si tous les ennemis sont morts et lance une nouvelle vague
+        //Check if all enemies are dead
         if (activeEnemies == 0 && !isSpawning)
         {
             StartCoroutine(StartWave());

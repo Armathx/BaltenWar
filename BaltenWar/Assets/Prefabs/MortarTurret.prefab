@@ -395,9 +395,9 @@ MonoBehaviour:
   target: {fileID: 0}
   head: {fileID: 6681221525935678184}
   muzzle: {fileID: 6681221525935678184}
-  damage: 3000
+  damage: 250
   attackRate: 3
-  range: 5000
+  range: 40
   timer: 0
   inGame: 0
   layerMask:
