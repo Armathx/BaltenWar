@@ -73,7 +73,7 @@ public class WaveManager : MonoBehaviour
     private void EnemyDied()
     {
         activeEnemies--;
-        Debug.Log(activeEnemies);
+        //Debug.Log(activeEnemies);
 
         //Check if all enemies are dead
         if (activeEnemies == 0 && !isSpawning)
