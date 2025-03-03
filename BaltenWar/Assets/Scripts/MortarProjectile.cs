@@ -48,6 +48,7 @@ public class MortarProjectile : MonoBehaviour
             foreach (var enemy in Physics.OverlapSphere(end, radius, layerMask))
             {
                 enemy.GetComponent<Enemy>()?.TakeDamage(damage);
+                enemy.GetComponent<Rigidbody>()?.AddExplosionForce(20f, transform.position, radius);
             }
 
             GetComponent<Renderer>().enabled = false;
