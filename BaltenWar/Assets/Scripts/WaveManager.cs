@@ -63,7 +63,7 @@ public class WaveManager : MonoBehaviour
 
                 //Increment enemies count
                 activeEnemies++;
-                Debug.Log(activeEnemies);
+                //Debug.Log(activeEnemies);
 
                 //Delegate
                 enemy.GetComponent<Enemy>().m_destroy += EnemyDied;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3699451787681834839}
   m_Layer: 0
-  m_Name: MortarExploE
+  m_Name: MortarExplo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601214497308584275}
   serializedVersion: 8
-  lengthInSec: 50
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5970,7 +5970,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.36241913
+          value: 0.5771866
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -5978,7 +5978,7 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 1
+          time: 0.77542114
           value: 0
           inSlope: -1.013586
           outSlope: -1.013586
@@ -9857,7 +9857,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8772726528139831067}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -10869,7 +10869,7 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0.106126115
         - serializedVersion: 3
-          time: 0.92026865
+          time: 0.79737437
           value: 0.000002458226
           inSlope: -0.5322794
           outSlope: -0.5322794

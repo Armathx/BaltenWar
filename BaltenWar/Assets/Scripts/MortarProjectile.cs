@@ -52,7 +52,7 @@ public class MortarProjectile : MonoBehaviour
 
             GetComponent<Renderer>().enabled = false;
 
-            Destroy(Instantiate(explosionPS, transform.position, Quaternion.identity), 0.333f);
+            Destroy(Instantiate(explosionPS, transform.position, Quaternion.identity), 4f);
 
             Destroy(gameObject, 0.333f);
         }
