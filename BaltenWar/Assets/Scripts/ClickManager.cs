@@ -84,6 +84,7 @@ public class ClickManager : MonoBehaviour
     private void UpdateCurrentTurret()
     {
         currentTurret.SetActive(false);
+        Vector3 pos = currentTurret.transform.position;
         switch (type)
         {
             case TURRET_TYPE.LASER:
@@ -100,6 +101,7 @@ public class ClickManager : MonoBehaviour
         }
 
         currentTurret.SetActive(true);
+        currentTurret.transform.position = pos;
     }
 
     private void OnDrawGizmos()
