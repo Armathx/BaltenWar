@@ -38,6 +38,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (agent.remainingDistance <= 0.1f)
+        {
+            PlayerInfo.instance.TakeDamage();
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(float damage)

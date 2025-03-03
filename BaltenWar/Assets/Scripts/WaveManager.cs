@@ -34,8 +34,11 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator StartWave()
     {
-        if (waveId >= waveConfigs.Count)
+        if (waveConfigs.Count == 0)
+        {
+            PlayerInfo.instance.Win();
             yield break; // Stop if no more wave
+        }
 
         isSpawning = true;
         WavePreset currentWaveConfig = waveConfigs.First();
