@@ -30,16 +30,15 @@ public class MortarTurret : Turret
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        Instantiate(rangeSphere, transform.position, transform.rotation);
-        rangeSphere.transform.localScale = new Vector3(this.range, this.range, this.range);
-
-        Debug.Log("Range : " + range);
+        rangeSphere.transform.localScale = new Vector3(range, range, range) / transform.localScale.x * 2f;//Set rangesphere
+        //Debug.Log("Range : " + range);
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        rangeSphere.SetActive(!inGame);
     }
 
     private void OnDrawGizmos()
