@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     [SerializeField] private GameObject vfx;
+    private GameObject vfxHolder;
 
     public delegate void IsDestroyed();
 
@@ -42,9 +43,16 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        GameObject g = Instantiate(vfx, weakPoint);
-        g.transform.localScale = new Vector3(1 / transform.localScale.x, 1 / transform.localScale.y, 1 / transform.localScale.z);
-        Destroy(g, 0.2f);
+        if (vfxHolder == null)
+        {
+            vfxHolder = Instantiate(vfx, weakPoint);
+            vfxHolder.transform.localScale = new Vector3(1 / transform.localScale.x, 1 / transform.localScale.y, 1 / transform.localScale.z);
+        }
+        var state = vfxHolder.GetComponent<VisualEffect>().GetSpawnSystemInfo(0);
+        if (!state.playing)
+        {
+            vfxHolder.GetComponent<VisualEffect>().Play();
+        }
         if (health <= 0 && !b_isDead) m_destroy?.Invoke();
     }
 
