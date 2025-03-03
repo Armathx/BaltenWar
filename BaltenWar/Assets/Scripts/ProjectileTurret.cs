@@ -4,6 +4,7 @@ public class ProjectileTurret : Turret
 {
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform pivot;
+    [SerializeField] public GameObject rangeSphere;
 
     public override void Aim()
     {
@@ -22,11 +23,13 @@ public class ProjectileTurret : Turret
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        rangeSphere.transform.localScale = new Vector3(range, range, range) / transform.localScale.x * 2f;//Set rangesphere
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        rangeSphere.SetActive(!inGame);
     }
 }

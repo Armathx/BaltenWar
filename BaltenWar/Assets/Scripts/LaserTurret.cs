@@ -5,6 +5,8 @@ using UnityEngine.VFX;
 public class LaserTurret : Turret
 {
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] public GameObject rangeSphere;
+
     private VisualEffect effect;
 
     public override void Aim()
@@ -28,6 +30,7 @@ public class LaserTurret : Turret
     private void Start()
     {
         effect = GetComponentInChildren<VisualEffect>();
+        rangeSphere.transform.localScale = new Vector3(range, range, range) / transform.localScale.x * 2f;//Set rangesphere
     }
 
     // Update is called once per frame
@@ -36,6 +39,8 @@ public class LaserTurret : Turret
         //lineRenderer.enabled = target != null;
 
         base.Update();
+        rangeSphere.SetActive(!inGame);
+
         if (target == null)
         {
             effect.Stop();

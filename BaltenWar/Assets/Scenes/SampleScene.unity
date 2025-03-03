@@ -7527,21 +7527,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
-      value: Duration
-      objectReference: {fileID: 0}
-    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3780543472823580764, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
-      value: 1
+    - target: {fileID: 4391724033051404577, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
+      propertyPath: range
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4844985558922534709, guid: d7ac0170eaf755a4faf7c84258b9df4e, type: 3}
       propertyPath: m_Name
@@ -13203,12 +13191,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 947807693334185104, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
-      propertyPath: lineRenderer
-      value: 
+      propertyPath: range
+      value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 1657259872308123917, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 947807693334185104, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 3566789336514630698, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13220,7 +13208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3566789336514630698, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.6914496
+      value: 7.023
       objectReference: {fileID: 0}
     - target: {fileID: 3566789336514630698, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13254,8 +13242,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: MortarTurret
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1657259872308123917, guid: b6965909253abaf44bd121da7bcd2c30, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13597,15 +13584,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1618883790116265039, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.111053
+      value: 43.1
       objectReference: {fileID: 0}
     - target: {fileID: 1618883790116265039, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9999981
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1618883790116265039, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08630538
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1618883790116265039, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13634,6 +13621,10 @@ PrefabInstance:
     - target: {fileID: 1618883790116265039, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585621023507413795, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
+      propertyPath: range
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8467829190155677809, guid: 4c670186529b2a140a5d301dd178ba5c, type: 3}
       propertyPath: m_Name
