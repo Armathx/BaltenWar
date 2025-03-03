@@ -5,6 +5,7 @@ using UnityEngine;
 public class MortarTurret : Turret
 {
     [SerializeField] private GameObject projectile;
+    [SerializeField] public GameObject rangeSphere;
 
     [SerializeField, Min(3)]
     private int lineSegment = 60;
@@ -12,8 +13,6 @@ public class MortarTurret : Turret
     public override void Aim()
     {
         head.transform.LookAt(target.transform.position);
-
-        //TrajectoryLine();
     }
 
     public override void Attack()
@@ -31,6 +30,10 @@ public class MortarTurret : Turret
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        Instantiate(rangeSphere, transform.position, transform.rotation);
+        rangeSphere.transform.localScale = new Vector3(this.range, this.range, this.range);
+
+        Debug.Log("Range : " + range);
     }
 
     // Update is called once per frame
