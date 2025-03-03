@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerInfo : MonoBehaviour
 {
     public static PlayerInfo instance;
-    private int nbLives = 3;
+    [SerializeField] private int nbLives;
 
     private void Awake()
     {
